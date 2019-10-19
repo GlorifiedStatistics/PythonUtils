@@ -23,5 +23,33 @@ For future reference so I don't have to keep writing it taking up space:
 
 ### Methods
 #### list_to_string(l)
-    Converts the given list of strings into a single string by appending them all together. Calls the str() built-in
-    function on every element inside l, so a string is always created.
+Converts the given list of strings into a single string by appending them all together. Calls the str() built-in
+function on every element inside l, so a string is always created.
+
+#### linearize_list(l):
+Converts l to be a list containing no sub-lists.
+If l is not a list, l is converted into a list of size 1.
+All empty lists are ignored.
+Dictionaries are not considered lists.
+
+#### is_list(l):
+Checks iterability and indexing to make see if l is a list
+
+#### is_sublist(l1, l2, proper=False, ordered=False, typeless_lists=False, remove_used=True, comparators=None)
+Returns True if l1 is a sublist of l2. If proper is True, then l1 must be a proper sublist of l2.
+
+#### is_subdict(d1, d2, proper=False, ordered=False, typeless_lists=False, remove_used=True, comparators=None)
+Returns True if d1 is a subdict of d2. If proper is True, then d1 must be a proper subdict of d2.
+
+#### cmp_list(l1, l2, ordered=False, typeless_lists=False, remove_used=True, comparators=None)
+Returns true if l1 and l2 contain the same elements.
+Dictionaries by default are compared using the cmp_dicts function, with the same parameters as this function.
+
+#### cmp_dict(d1, d2, ordered=False, typeless_lists=False, remove_used=True, comparators=None)
+Returns True if the dictionaries d1 and d2 are equivalent.
+
+#### diff_list(l1, l2, ordered=False, typeless_lists=False, remove_used=True, comparators=None)
+Returns all of the elements in l1 that are not in l2 (ie: l1 - l2).
+
+#### diff_dict(d1, d2, ordered=False, typeless_lists=False, remove_used=True, comparators=None)
+Returns all of the elements in d1 that are not in d2 (ie: d1 - d2).

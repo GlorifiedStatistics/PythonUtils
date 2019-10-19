@@ -23,5 +23,5 @@ For future reference so I don't have to keep writing it taking up space:
 
 ### Methods
 #### list_to_string(l)
-  Converts the given list of strings into a single string by appending them all together. Calls the str() built-in
+    Converts the given list of strings into a single string by appending them all together. Calls the str() built-in
     function on every element inside l, so a string is always created.

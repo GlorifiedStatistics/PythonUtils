@@ -194,13 +194,14 @@ def diff_dict(d1, d2, ordered=False, typeless_lists=False, remove_used=True, com
     return ret
 
 
-def add_dicts(d1, d2, behavior='first'):
+def add_dicts(d1, d2, behavior=None):
     """
     Combines the two dictionaries together. If they have any elements that share the same key, the behavior is
         defined by 'behavior' which can take the values:
         - 'first' : keep the value from d1, ignore d2
         - 'second' : keep the value from d2, ignore d1
         - 'add' : attempt to add the two values together using the default __add__ implementation
+        - None: if behavior is left as None, an error is thrown upon conflicting keys
     :param behavior: how to deal with elements that share the same key
     """
     ret = {}
@@ -208,7 +209,9 @@ def add_dicts(d1, d2, behavior='first'):
         ret[key] = value
     for key, value in d2.items():
         if key in ret.keys():
-            if behavior == 'first':
+            if behavior is None:
+                raise ValueError("Conflicting keys between the two dictionaries on key '%s'" % key)
+            elif behavior == 'first':
                 continue
             elif behavior == 'add':
                 ret[key] += value

@@ -19,6 +19,7 @@ For future reference so I don't have to keep writing it taking up space:
         Default: True
 """
 
+
 def list_to_string(l):
     """
     Converts the given list of strings into a single string by appending them all together. Calls the str() built-in
@@ -190,6 +191,28 @@ def diff_dict(d1, d2, ordered=False, typeless_lists=False, remove_used=True, com
                                                     comparators):
             ret[key] = d1[key]
 
+    return ret
+
+
+def add_dicts(d1, d2, behavior='first'):
+    """
+    Combines the two dictionaries together. If they have any elements that share the same key, the behavior is
+        defined by 'behavior' which can take the values:
+        - 'first' : keep the value from d1, ignore d2
+        - 'second' : keep the value from d2, ignore d1
+        - 'add' : attempt to add the two values together using the default __add__ implementation
+    :param behavior: how to deal with elements that share the same key
+    """
+    ret = {}
+    for key, value in d1.items():
+        ret[key] = value
+    for key, value in d2.items():
+        if key in ret.keys():
+            if behavior == 'first':
+                continue
+            elif behavior == 'add':
+                ret[key] += value
+        ret[key] = value
     return ret
 
 

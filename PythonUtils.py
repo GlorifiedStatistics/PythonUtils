@@ -55,13 +55,13 @@ def linearize_list(l):
 
 def is_list(l):
     """
-    Checks iterability and indexing to make see if l is a list
+    Checks iterability and indexing to see if l is a list
     """
     try:
         for _ in l:
             pass
-        if len(l) > 0:
-            a = l[0]
+        if len(l) > 0 and l[0] is not None:
+            pass
         return not isinstance(l, dict)
     except TypeError:
         return False

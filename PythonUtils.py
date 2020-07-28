@@ -62,7 +62,7 @@ def is_list(l):
             pass
         if len(l) > 0 and l[0] is not None:
             pass
-        return not isinstance(l, dict)
+        return not isinstance(l, (dict, str))
     except TypeError:
         return False
 
